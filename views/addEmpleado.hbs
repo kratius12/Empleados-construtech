@@ -1,0 +1,80 @@
+<div class="container">
+        <div class="row">
+          <div class="col-md-12 ">
+            <form  method="POST" id="form" action="/agregarEmp">
+              <div class="card text-center w-100">
+                <div class="card-header bg-primary text-white">
+                  <h2>Agregar Empleado</h2>
+                </div>            
+                {{> empleadoForm}}
+              </div>                
+            </form>
+          </div>
+        </div>
+      </div>
+
+<script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="../Bootstrap-4-Multi-Select-BsMultiSelect/dist/js/BsMultiSelect.min.js"></script>
+<script src="../Bootstrap-4-Multi-Select-BsMultiSelect/dist/js/BsMultiSelect.bs4.min.js"></script>
+<script src="js/38595e06c7.js"></script>
+<script src="js/jquery-confirm.min.js"></script>
+<script src="js/validaciones.js"></script>
+<script src="js/moment.js"></script>
+  <script>
+    $("#form").submit(function(e){
+        e.preventDefault();
+      });
+    $('#add').on('click', async function(){
+      let nombre = $("#nombre").val();
+      let email = $("#email").val();
+      let direccion = $("#direccion").val();
+      let telefono = $("#telefono").val();
+      let cedula = $("#cedula").val();
+      //let especialidad = $("#especialidad").val();
+      let estado = $("#estado").val();
+      let errors = []
+      await errors.push(alertconfirm("Nombre", nombre,'string',10));
+      await errors.push(alertconfirm("Email", email, 'email', 50));
+      await errors.push(alertconfirm("Direccion", direccion, 'string', 20));
+      await errors.push(alertconfirm("Teléfono", telefono, 'int', 10));
+      await errors.push(alertconfirm("Cedula", cedula, 'int', 15));
+      //await errors.push(alertconfirm("Especialidad", especialidad, '', ''));
+      await errors.push(alertconfirm("Estado", estado, '', ''));
+      const allcheck =  array => array.every(value => value === array[0]);
+      const check = allcheck(errors);
+      console.log(check,errors);
+       if (check) {
+        $.confirm({
+            title:"Empleado ingresado con exito!",
+            content:"Redirecionando a listado de empleados...",
+            icon: 'fa fa-check',
+            theme: 'modern',
+            closeIcon: true,
+            animation: 'news',
+            closeAnimation: 'news',
+            type: 'green',
+            columnClass:'col-md-6 col-md-offset-3',
+            autoClose: 'okay|4000',
+            buttons: {
+                okay: function () {
+                  window.location.href = "empleados.html";
+                },
+            }            
+        })     
+      }else{
+          $.confirm({
+          title:"Error",
+          content:errors,
+          icon: 'fa fa-xmark',
+          theme: 'modern',
+          closeIcon: true,
+          animation: 'news',
+          closeAnimation: 'news',
+          type: 'red',
+        })
+      }      
+    });
+  </script>

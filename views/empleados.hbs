@@ -1,0 +1,167 @@
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="index.html">
+              <i class="fa-solid fa-gauge-high"></i>
+              Inicio
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="usuarios.html">
+              <i class="fa-solid fa-users"></i>
+              Usuarios
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="roles.html">
+              <i class="fa-solid fa-user-tie"></i>
+              Roles
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="permisos.html">
+              <i class="fa-solid fa-user-gear"></i>
+              Permisos
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/empsList">
+              <i class="fa-solid fa-user-group"></i>
+              Empleados
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="especialidad.html">
+              <i class="fa-solid fa-screwdriver-wrench"></i>
+              Especialidades
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="proveedores.html">
+              <i class="fa-solid fa-truck"></i>
+              Proveedores
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="materiales.html">
+              <i class="fa-solid fa-box-open"></i>
+              Materiales
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categorias.html">
+              <i class="fa-solid fa-book"></i>
+              Categorias
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="compras.html">
+              <i class="fa-solid fa-cart-shopping"></i>
+              Compras
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="obras.html">
+              <i class="fa-solid fa-map-location-dot"></i>
+              Obras y tiempos
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="clientes.html">
+              <i class="fa-solid fa-id-card"></i>
+              Clientes
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="row my-3">
+        <div class="col-md-8 "><h2>Empleados</h2></div>
+      </div>
+      <div class="form-group mt-3" nav-link><a class="btn btn-primary" href="http://localhost:9000/addEmpleado"> <span data-feather="user-plus"></span> Agregar empleado </a></div>
+      <div class="table-responsive">
+        <table id="table" class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Dirección</th>
+              <th scope="col">Email</th>
+              <th scope="col">Telefono</th>
+              <th scope="col">cedula</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+                  {{#each result}}
+                  <tr>
+                    <td>{{this.nombre}}</td>
+                    <td>{{this.direccion}}</td>
+                    <td>{{this.email}}</td>
+                    <td>{{this.telefono}}</td>
+                    <td>{{this.cedula}}</td>
+                    <td><div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                    </div></td>
+                    <td>
+                      <a class="btn bg-secondary text-white" href="/Empedit">
+                        Editar 
+                        <span data-feather="edit-3"></span>
+                      </a>
+                    </td>
+                  </tr>
+                  {{/each}}
+                </tbody>
+        </table>
+      </div>
+    </main>
+    <div class="mt-5 p-4 bg-dark text-white text-center " style="z-index: 9999;bottom: 0px;position: absolute;">
+      <div class="container">
+        <div class="row">
+          <div class="col-4 fs-6"><p>Copyright &copy; Constru-tech 2023</p></div>
+          <div class="col-4 fs-5">Soporte: <i class="fa-brands fa-whatsapp"></i></div>
+        </div>
+      </div>
+  </div>
+</div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js" integrity="sha512-2bMhOkE/ACz21dJT8zBOMgMecNxx0d37NND803ExktKiKdSzdwn+L7i9fdccw/3V06gM/DBWKbYmQvKMdAA9Nw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script>
+    var table = $('#table').dataTable({
+      'dom': "<'row' <'col-sm-3'<'toolbar'>><'col-sm-6'l><'col-sm-3'f>" +
+         "<'row'<'col-sm-12'tr>>" +
+         "",
+         'language': {
+						"decimal": "",
+						"emptyTable": "No hay información",
+						"info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+						"infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+						"infoFiltered": "(Filtrado de _MAX_ total entradas)",
+						"infoPostFix": "",
+						"thousands": ",",
+						"lengthMenu": "Mostrar _MENU_ Entradas",
+						"search": "Buscar:",
+						"zeroRecords": "Sin resultados encontrados",
+						"paginate": {
+							"first": "Primero",
+							"last": "Ultimo",
+							"next": "Siguiente",
+							"previous": "Anterior"
+						}
+          },
+          "bLengthChange": false,
+    });
+    feather.replace()
+  </script>
+  </body>
+</html>
